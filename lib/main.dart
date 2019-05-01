@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:scaffold_demo/page2.dart';
  
-void main() => runApp(MaterialApp(home:MyApp()));
+void main() => runApp(MaterialApp(
+    initialRoute: "/",
+    routes: {
+        "/":(context) =>MyApp(),
+        "/page2": (context) => PageTwo(),
+    },
+  ));
 
 class MyApp extends StatefulWidget {
   @override
@@ -33,14 +40,17 @@ class _MyAppState extends State<MyApp> {
   }
   @override
   Widget build(BuildContext context) {
-    return   Scaffold(
+    return Scaffold(
 appBar: AppBar(title: Text("Scaffold Demo",
-
+style: TextStyle(fontSize: 17.0),
 ),
 actions: <Widget>[
   IconButton(icon: Icon(Icons.add_alert),
   onPressed: () =>_alertShow("Scaffold Demo"),),
-
+  IconButton(icon: Icon(Icons.battery_alert),
+  onPressed: () =>_alertShow("Scaffold Demo"),),
+    IconButton(icon: Icon(Icons.sim_card_alert),
+  onPressed: () =>_alertShow("Scaffold Demo"),),
 ],
 ),
 body: Container(
@@ -72,7 +82,10 @@ body: Container(
             padding: EdgeInsets.all(20.0),
           alignment: Alignment.center,
           color: Colors.yellow,
-          child: Text("Scaffold Demo Body",style: TextStyle(fontSize: 20.0,color: Colors.green),),
+          child: RaisedButton(
+            onPressed: () => Navigator.pushNamed(context, "/page2",),
+          child: Text("Page 2 ",style:TextStyle(color: Colors.black)),
+          ),
           ),
           ),
           ),
@@ -109,7 +122,7 @@ new BottomNavigationBarItem(
           break;
         case 2: _alertShow("Create");
           break;
-default: _alertShow("Error");
+      default: _alertShow("Error");
           break;
       }
       
@@ -119,7 +132,7 @@ default: _alertShow("Error");
 drawer: new Drawer(
     child: ListTile(
       leading: Icon(Icons.close,size: 40.0,),
-      title: Text('Close',style: TextStyle(fontSize: 40.0),),
+      title: Text('Close',style: TextStyle(fontSize: 40.0,color: Colors.deepOrange.shade900),),
       onTap: () {
         Navigator.pop(context); //kapatma
  
