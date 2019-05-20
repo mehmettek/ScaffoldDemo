@@ -28,15 +28,11 @@ class _MyAppState extends State<MyApp> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-
-          ),
-
-        ],
+  ),
+   ],
         );
-
-      }
-
-    );
+   }
+     );
   }
   @override
   Widget build(BuildContext context) {
